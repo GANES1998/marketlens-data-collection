@@ -3,7 +3,7 @@
 This is the collection of python based data collection scripts for fetching and dumping realtime data from [alphavantage.co](alphavantage.co),
 Csv files and other sources and converting them to SQL insert statement for filling the data source.
 
-The mail executable scrips are 
+The main executable scrips are 
 
 1. Stock Collection - [stock-collection.py](collection/stock-collection.py)
 2. Sector DataCollection (From wikipedia table) - [sector_collection.py](collection/sector_collection.py)
