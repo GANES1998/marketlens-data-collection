@@ -1,11 +1,9 @@
 from collections import defaultdict
 import pandas as pd
 
-from sql_utils import convert_row_to_sql
-from type_defs import Column
 import pickle
 
-df = pd.read_csv(filepath_or_buffer='sector.data', sep='\t')
+df = pd.read_csv(filepath_or_buffer='../data/sector.data', sep='\t')
 
 # Remove headers
 # sectors_list = df.iloc[1:50, :].values.tolist()
@@ -38,7 +36,7 @@ for sector_info in sectors_list:
 #             ) + '\n'
 #         )
 
-with open('data/comapanies_sector_2.pickle', 'wb+') as handle:
+with open('../data/comapanies_sector_2.pickle', 'wb+') as handle:
     pickle.dump(sector_company_list, handle)
 
 

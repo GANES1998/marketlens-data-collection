@@ -1,12 +1,10 @@
 import time
-from typing import List, Dict
+from typing import Dict
 
 import requests
 
-import constants
-import sql_utils
-import utils
-from type_defs import Column
+from utils import utils, constants, sql_utils
+from types.type_defs import Column
 
 
 def collect_crypto_date(symbol: str, api_key: str) -> Dict:
@@ -31,7 +29,7 @@ crypto_currencies = ['BTC', 'ETH', 'BNB', 'XRP', 'ADA', 'SOL', 'DOGE', 'BUSD', '
 
 request_no = 1
 
-with open('sql_generated/crypt_currency.sql', mode='w+') as fp:
+with open('../sql_generated/crypt_currency.sql', mode='w+') as fp:
 
     for crypto in crypto_currencies:
 

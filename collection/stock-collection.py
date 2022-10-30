@@ -1,14 +1,13 @@
 import time
-from typing import Dict, List
+from typing import Dict
 import requests
-import constants
-import urllib3
-from sql_utils import convert_row_to_sql, convert_to_sql
-from type_defs import Column
+from utils import constants
+from utils.sql_utils import convert_row_to_sql
+from types.type_defs import Column
 import pickle
-from utils import transform_stock
+from utils.utils import transform_stock
 
-sector_stock_map = pickle.load(open('data/comapanies_sector_2.pickle', 'rb'))
+sector_stock_map = pickle.load(open('../data/comapanies_sector_2.pickle', 'rb'))
 
 def get_stock_data(symbol: str, api_key: str = 'demo') -> Dict:
 
@@ -46,7 +45,7 @@ request_no = 1
 existing_stocks = []
 
 try:
-    with open('existing_stock.pickle', 'rb') as handle:
+    with open('../status_dump/existing_stock.pickle', 'rb') as handle:
         existing_stocks = pickle.load(handle)
 except FileNotFoundError:
     print("No File Available for existing stock")
@@ -55,7 +54,7 @@ except FileNotFoundError:
 
 for sector, stocks in sector_stock_map.items():
 
-    with open('sql_generated/stock_2.sql', 'a+') as fp:
+    with open('../sql_generated/stock_2.sql', 'a+') as fp:
 
         for stock in stocks:
 
@@ -98,7 +97,7 @@ for sector, stocks in sector_stock_map.items():
 
             existing_stocks.append(stock)
 
-            with open('existing_stock.pickle', 'wb+') as fp_pickle:
+            with open('../status_dump/existing_stock.pickle', 'wb+') as fp_pickle:
                 pickle.dump(existing_stocks, fp_pickle)
 
             if request_no % 5 == 0:

@@ -1,16 +1,15 @@
 import pandas as pd
 
-import sql_utils
-import utils
-from type_defs import Column
+from utils import utils, sql_utils
+from types.type_defs import Column
 
-df = pd.read_csv('csv_data/commodity.csv')
+df = pd.read_csv('../csv_data/commodity.csv')
 
 numpy_data = df.values
 
 n_rows, cols = numpy_data.shape
 
-with open('sql_generated/commodity.sql', 'w+') as fp:
+with open('../sql_generated/commodity.sql', 'w+') as fp:
     rows = []
 
     for i in range(n_rows):

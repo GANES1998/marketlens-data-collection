@@ -1,7 +1,7 @@
 from typing import List
 from string import Template
 
-from type_defs import Column
+from types.type_defs import Column
 
 SQL_TEMPLATE = "INSERT INTO $Table ($ColumnNames) values ($Values);"
 
