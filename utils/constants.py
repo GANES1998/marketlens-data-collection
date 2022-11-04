@@ -18,3 +18,9 @@ API_KEYS = [
     'PZIIEAI5GRXMYZ5S',
     '1Z2SURKH9YMILXQE'
 ]
+
+DB_DETAILS = {
+    'USER': 'g.ravichandran',
+    'PASSWORD': 'OVVbc3jEPhf8oFLYzRobU6je',
+    'HOST': 'oracle.cise.ufl.edu:1521:orcl'
+}
