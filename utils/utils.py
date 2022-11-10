@@ -1,6 +1,6 @@
 from typing import Dict, List
 
-from types.type_defs import Column
+from dtypes.type_defs import Column
 from datetime import datetime
 
 FLOAT_COLUMNS = ['open', 'high', 'low', 'close', 'reportedEPS', 'estimatedEPS']

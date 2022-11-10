@@ -1,7 +1,7 @@
 import pandas as pd
 
 from utils import utils, sql_utils
-from types.type_defs import Column
+from dtypes.type_defs import Column
 
 df = pd.read_csv('../csv_data/commodity.csv')
 

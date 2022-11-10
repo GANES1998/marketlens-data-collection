@@ -5,7 +5,7 @@ import requests
 from typing import Dict
 from utils import constants
 from utils.sql_utils import convert_row_to_sql
-from types.type_defs import Column
+from dtypes.type_defs import Column
 from utils.utils import transform_company
 
 

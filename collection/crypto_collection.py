@@ -4,7 +4,7 @@ from typing import Dict
 import requests
 
 from utils import utils, constants, sql_utils
-from types.type_defs import Column
+from dtypes.type_defs import Column
 
 
 def collect_crypto_date(symbol: str, api_key: str) -> Dict:

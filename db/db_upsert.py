@@ -17,7 +17,7 @@ try:
 except FileNotFoundError:
     print("DB INSERT DUMP FILE NOT FOUND")
 
-sql_files = ['../sql_generated/stock_1.sql']
+sql_files = ['../sql_generated/quarterly_indicator.sql']
 
 
 connection_recycle_nature = 1000

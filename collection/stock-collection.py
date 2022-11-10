@@ -3,7 +3,7 @@ from typing import Dict
 import requests
 from utils import constants
 from utils.sql_utils import convert_row_to_sql
-from types.type_defs import Column
+from dtypes.type_defs import Column
 import pickle
 from utils.utils import transform_stock
 
