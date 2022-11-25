@@ -17,10 +17,10 @@ try:
 except FileNotFoundError:
     print("DB INSERT DUMP FILE NOT FOUND")
 
-sql_files = ['../sql_generated/quarterly_indicator.sql']
-
+sql_files = ['../sql_generated/treasury_yield.sql']
 
 connection_recycle_nature = 1000
+
 
 def insert():
     conn = oracledb.connect(user=constants.DB_DETAILS['USER'], password=constants.DB_DETAILS['PASSWORD'], dsn=dsn)
@@ -44,19 +44,18 @@ def insert():
                     file_exec_count += 1
                     continue
 
-
                 cursor.execute(statement[:-2])
 
                 file_exec_count += 1
                 execution_count += 1
-
 
                 if execution_count % connection_recycle_nature == 0:
                     conn.commit()
 
                     conn.close()
 
-                    conn = oracledb.connect(user=constants.DB_DETAILS['USER'], password=constants.DB_DETAILS['PASSWORD'],
+                    conn = oracledb.connect(user=constants.DB_DETAILS['USER'],
+                                            password=constants.DB_DETAILS['PASSWORD'],
                                             dsn=dsn)
 
                     cursor = conn.cursor()
@@ -71,8 +70,6 @@ def insert():
 
                     commit_time = datetime.datetime.now()
 
-
-
             conn.commit()
             conn.close()
 
@@ -86,11 +83,13 @@ def insert():
             with open('../status_dump/db_insert.pickle', 'wb+') as handle:
                 pickle.dump(db_insert_executed, handle)
 
+
 while True:
     try:
         insert()
         break
-    except exceptions.DatabaseError:
+    except exceptions.DatabaseError as e:
+        print(e)
         print("Connection Closed on the DB side. Restarting........")
 
 print(f"All rows inserted successfully")
