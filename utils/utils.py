@@ -3,14 +3,15 @@ from typing import Dict, List
 from dtypes.type_defs import Column
 from datetime import datetime
 
-FLOAT_COLUMNS = ['open', 'high', 'low', 'close', 'reportedEPS', 'estimatedEPS']
+FLOAT_COLUMNS = ['open', 'high', 'low', 'close', 'reportedEPS', 'estimatedEPS', 'market cap']
 INT_COLUMNS = []
 
 DATE_COLUM_NAME = 'day'
 
 COULMN_NAME_TRANSFORMATION = {
     'estimatedEPS': 'EXPECTED_EPS',
-    'reportedEPS': 'REPORTED_EPS'
+    'reportedEPS': 'REPORTED_EPS',
+    'market cap': 'MARKET_CAP'
 }
 
 

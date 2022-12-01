@@ -29,7 +29,7 @@ crypto_currencies = ['BTC', 'ETH', 'BNB', 'XRP', 'ADA', 'SOL', 'DOGE', 'BUSD', '
 
 request_no = 1
 
-with open('../sql_generated/crypt_currency.sql', mode='w+') as fp:
+with open('../sql_generated/crypto_currency_w_mcap.sql', mode='w+') as fp:
 
     for crypto in crypto_currencies:
 
