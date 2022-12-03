@@ -6,8 +6,8 @@ from oracledb import exceptions
 
 from utils import constants
 
-dsn = oracledb.makedsn(host='oracle.cise.ufl.edu', port=1521, service_name='orcl')
-conn = oracledb.connect(user=constants.DB_DETAILS['USER'], password=constants.DB_DETAILS['PASSWORD'], dsn=dsn)
+# dsn = oracledb.makedsn(host='oracle.cise.ufl.edu', port=1521, service_name='orcl')
+# conn = oracledb.connect(user=constants.DB_DETAILS['USER'], password=constants.DB_DETAILS['PASSWORD'], dsn=dsn)
 
 db_insert_executed = {}
 
@@ -17,12 +17,15 @@ try:
 except FileNotFoundError:
     print("DB INSERT DUMP FILE NOT FOUND")
 
-sql_files = ['../sql_generated/treasury_yield.sql']
+sql_files = ['../sql_generated/yfin_stock.sql']
+
+# db_insert_executed[sql_files[0]] = 198000
 
 connection_recycle_nature = 1000
 
 
 def insert():
+    dsn = oracledb.makedsn(host='oracle.cise.ufl.edu', port=1521, service_name='orcl')
     conn = oracledb.connect(user=constants.DB_DETAILS['USER'], password=constants.DB_DETAILS['PASSWORD'], dsn=dsn)
     execution_count = 0
     cursor = conn.cursor()
@@ -42,6 +45,10 @@ def insert():
                 if file_exec_count < db_insert_executed.get(sql_file, 0):
                     execution_count += 1
                     file_exec_count += 1
+
+                    if file_exec_count % connection_recycle_nature == 0:
+                        print(f"Skipped [ {file_exec_count} ] inserts as they were already inserted")
+
                     continue
 
                 cursor.execute(statement[:-2])

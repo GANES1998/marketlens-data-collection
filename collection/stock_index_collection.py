@@ -5,15 +5,15 @@ from dtypes import type_defs
 from utils import sql_utils
 
 stock_indices = {
-    'S & P 500': '../csv_data/s&p500.tsv'
-    # 'Dow Jones': '../csv_data/dowjones.tsv',
+    # 'S & P 500': '../csv_data/s&p500.tsv'
+    # 'Dow Jones': '../csv_data/dowjones.tsv'
     # 'NASDAQ': '../csv_data/nasdaq.tsv',
-    # 'Russel': '../csv_data/russel.tsv'
+    'Russel': '../csv_data/russel.tsv'
 }
 
 rows = []
 
-with open("../sql_generated/stock_index.sql", mode='w+') as fp:
+with open("../sql_generated/russel_stock_index.sql", mode='w+') as fp:
     for index_name, file_path in stock_indices.items():
 
         df = pd.read_csv(file_path, sep='\t')
